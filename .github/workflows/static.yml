@@ -43,10 +43,14 @@ jobs:
           import shutil
 
           site = Path("_site")
+          if (site / "oboa").exists():
+              raise SystemExit("OBOA assets are Studio-direct-upload-only and must not be published")
           mapping = site / "_asset-manifests/webp-path-map-v1.jsonl"
           rows = [json.loads(line) for line in mapping.read_text(encoding="utf-8").splitlines()]
-          if len(rows) != 9130:
-              raise SystemExit(f"Unexpected compatibility-map count: {len(rows)}")
+          canonical = {path.relative_to(site).as_posix() for path in site.rglob("*.webp")}
+          mapped = {row["webp_path"] for row in rows}
+          if not canonical or len(rows) != len(mapped) or mapped != canonical:
+              raise SystemExit("Compatibility map must cover every canonical WebP exactly once")
           for row in rows:
               source = site / row["webp_path"]
               legacy = site / row["legacy_path"]
