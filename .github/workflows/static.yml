@@ -33,11 +33,34 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Build WebP site with legacy image URL aliases
+        run: |
+          mkdir _site
+          rsync -a --exclude='.git' --exclude='_site' ./ _site/
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import shutil
+
+          site = Path("_site")
+          mapping = site / "_asset-manifests/webp-path-map-v1.jsonl"
+          rows = [json.loads(line) for line in mapping.read_text(encoding="utf-8").splitlines()]
+          if len(rows) != 9130:
+              raise SystemExit(f"Unexpected compatibility-map count: {len(rows)}")
+          for row in rows:
+              source = site / row["webp_path"]
+              legacy = site / row["legacy_path"]
+              if not source.is_file() or legacy.exists():
+                  raise SystemExit(f"Invalid alias source or collision: {row}")
+              legacy.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copyfile(source, legacy)
+          print(f"Created {len(rows)} legacy URL aliases from canonical WebP assets")
+          PY
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: '.'
+          path: '_site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
