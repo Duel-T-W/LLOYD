@@ -9121,6 +9121,3 @@
 {"legacy_path":"lg/ch/7/3/6/D/3/5.png","webp_path":"lg/ch/7/3/6/D/3/5.webp","webp_sha256":"78ec7f4c8fa67f20fbe03923ef65a532d43e540ccbcc42ab4af3211e155c68f8","verification":"DECODED_PIXELS_IDENTICAL"}
 {"legacy_path":"lg/ch/7/3/6/D/3/6.png","webp_path":"lg/ch/7/3/6/D/3/6.webp","webp_sha256":"78ec7f4c8fa67f20fbe03923ef65a532d43e540ccbcc42ab4af3211e155c68f8","verification":"DECODED_PIXELS_IDENTICAL"}
 {"legacy_path":"lloyd.png","webp_path":"lloyd.webp","webp_sha256":"9331b74d7641a26339d7abcf5884af2f1358a37e4ede7734c0760c399c3c9c38","verification":"DECODED_PIXELS_IDENTICAL"}
-{"legacy_path":"qa/ch/01/01/ly/01/01-bg01.jpg","webp_path":"qa/ch/01/01/ly/01/01-bg01.webp","verification":"APPROVED_WEBP_PUBLICATION","webp_sha256":"9c0b2f13917ee7df3d4d047e6e07a2294e0af459445af77491ab55d316aea6ff"}
-{"legacy_path":"qa/ch/01/01/se/01/01-bg01.jpg","webp_path":"qa/ch/01/01/se/01/01-bg01.webp","verification":"APPROVED_WEBP_PUBLICATION","webp_sha256":"b6f708da47c4a7e7a0e4eb74f805d46a6312127bd62068b35464c87045cb912d"}
-{"legacy_path":"qa/ch/01/01/st/01/01-bg01.jpg","webp_path":"qa/ch/01/01/st/01/01-bg01.webp","verification":"APPROVED_WEBP_PUBLICATION","webp_sha256":"5c61cf5151f03c33ca6e3e65a8d2cfa7fc984bf6d34add4bc297ff164bbb538c"}
